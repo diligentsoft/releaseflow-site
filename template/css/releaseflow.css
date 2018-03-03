@@ -1,0 +1,14 @@
+body { padding-top: 80px; }
+
+
+#releaseflow-logo {
+    width: 160px;
+}
+
+#releaseflow-branch {
+    max-width: 80%;
+}
+
+.navbar {
+    padding: .5rem 1rem;
+}

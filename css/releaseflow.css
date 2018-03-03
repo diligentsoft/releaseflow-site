@@ -1,0 +1,35 @@
+body {
+    letter-spacing: 0.025em;
+    color: #919aa1;
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#releaseflow-logo {
+    width: 160px;
+}
+
+.releaseflow-diagram {
+    max-width: 80%;
+}
+
+.navbar {
+    padding: .5rem 1rem;
+}
+
+.content-dark {
+    background-color: rgb(17, 119, 184);
+    color: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: rgb(17, 119, 184);
+}
+
+a.nav-link {
+    color: rgb(17, 119, 184);
+}

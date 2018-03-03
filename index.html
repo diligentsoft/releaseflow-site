@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/releaseflow.css" media="screen">
+
+        <title>releaseflow ~~></title>
+    </head>
+    <body data-spy="scroll" data-target="#nav">
+        <header id="nav">
+            <nav class="navbar fixed-top navbar-expand-lg bg-light">
+                <div class="container">
+                    <h1>
+                        <a href="../" class="navbar-brand" title="releaseflow">
+                            <img id="releaseflow-logo" src="img/releaseflow-logo.png" alt="releaseflow"/>
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-pills mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#home" role="button" aria-expanded="false" aria-controls="Home">
+                                    Home <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#developing" role="button" aria-expanded="false" aria-controls="Developing">
+                                    Developing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#releasing" role="button" aria-expanded="false" aria-controls="Releasing">
+                                    Releasing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#maintaining" role="button" aria-expanded="false" aria-controls="Maintaining">
+                                    Maintaining
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#definition" role="button" aria-expanded="false" aria-controls="Definition">
+                                    Definition
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about" role="button" aria-expanded="false" aria-controls="About">
+                                    About
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#appendix" role="button" aria-expanded="false" aria-controls="Appendix">
+                                    Appendix
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <section id="home" class="content-light">
+            <div class="container">
+                <p class="lead">The trendy name for the Release Branching strategy</p>
+                <!--<p class="lead">Critical to a healthy delivery pipeline</p>-->
+                <img class="releaseflow-diagram" src="img/releaseflow-main.png" class="mx-auto d-block" alt="Release Flow">
+            </div>
+        </section>
+
+
+        <section id="developing" class="content-dark">
+            <div class="container">
+                <h2>Developing</h2>
+                <p class="lead">Branching for development</p>
+
+                <h4>The sweet spot</h4>
+                <p>
+                    Ideally, develop on short-lived feature branches that originate from and terminate on the mainline.  A feature branch facilitates isolation of the changes being introduced
+                    and makes peer-review super simple.  Releases keep flowing right from the mainline.
+                </p>
+                <img class="releaseflow-diagram" src="img/dev-x-basic-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Basic">
+
+                <h4>Life aint always simple</h4>
+                <p>
+                    Of course, some business contexts don't lend themselves to continual releases from the mainline. When some manual testing / hardening is needed, simply create a release
+                    branch so that feature development can continue on the mainline.
+                </p>
+                <img class="releaseflow-diagram" src="img/dev-x-intermediate-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Intermediate">
+
+                <h4>Controlled Complexity</h4>
+                <p>
+                    Other teams sometimes have to deal with more than one ongoing release while continuing feature development for some future release.  No problem.
+                </p>
+                <img class="releaseflow-diagram" src="img/dev-x-advanced-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Advanced">
+            </div>
+        </section>
+
+        <section id="releasing" class="content-light">
+            <div class="container">
+                <h2>Releasing</h2>
+                <p class="lead">Branching for releases</p>
+                <p>
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </p>
+                <p>
+                    Releases should always produce a tag.
+                </p>
+            </div>
+        </section>
+
+        <section id="maintaining" class="content-dark">
+            <div class="container">
+                <h2>Maintaining</h2>
+                <p class="lead">Branching for maintenance</p>
+                <p>
+                    <h3>How do I..?.</h3>
+                    <p>
+                        You may wonder if there are some maintenance scenarios that releaseflow might not support.  After all, it's a simple strategy. Perhaps there's some more complex
+                        use cases that aren't supported?  We've not uncovered such a problem so far.  Here's a few "How do I..." questions and answers which might just help settle your nerves.
+                    </p>
+
+                    <h4>How do I find the code running in production?</h4>
+                    <p>
+                        Each release has a corresponding tag. To find the exact code running in production one simply needs to determine the version of the application deployed. Once known,
+                        the corresponding tag can be used to navigate to the code at the exact commit deployed in production.
+                    </p>
+
+                    <h4>How do I fix a defect?</h4>
+                    <p>
+                        Similarly to adding a new feature, the starting point must be determining the target of the defect.
+                        Next, a new branch should be created from the target with a name referencing the defect such as fix/DE1234.
+                        The defect remedial action should take place on this branch and result in a merge request to have the fix applied to the target branch.
+                        Finally, the merge request reviewers should also ensure this fix is applied (usually cherry-picked) to other branches where necessary, e.g. master and/or ongoing release branches.
+                        How do I ensure a defect fix is applied to future/past versions?
+                        As above, the merge request reviewers should also ensure this fix is applied (usually cherry-picked) to other branches where necessary, e.g. master and/or ongoing release branches.
+                    </p>
+
+                    <h4>How do I add a new feature?</h4>
+                    <p>
+                        Firstly, one must determine the target of a new feature. This will usually be master where the latest development is in motion. Of course, if the feature is to target a specific
+                        release, then the corresponding release branch should be sought out.
+                        Secondly, a new branch should be created from the target. The branch should be given a useful name, usually a user story reference with a feature prefix,
+                        i.e. feature/US1234.
+                        Thirdly, feature work should happen on this branch and finally a merge request should be raised to have the feature pulled into the target branch.
+                    </p>
+                </h4>
+            </div>
+        </section>
+
+        <section id="definition" class="content-light">
+            <div class="container">
+                <h2>Definition</h2>
+                <p class="lead">Making it clear</p>
+                <p>
+                    The "Release Branching Strategy" is an industry-standard approach which advocates that
+                    the only type of long-lived branches - apart from the mainline - are release branches. This strategy
+                    is documented and recommended in the Continuous Integration book [CD].
+                </p>
+                <p>
+                    The mainline branch (e.g. master) is used for cutting edge development as recommended in the Continuous
+                    Integration [CD] text which advocates the approach of "Develop on mainline".
+                </p>
+                <p>
+                    Of course, it is normal, and encouraged, to use short-lived branches for developing features and
+                    fixing defects.
+                </p>
+
+                <h3>Branch Roles</h3>
+
+                <h4>Mainline</h4>
+                <p>
+                    The main branch, i.e. master, is where the latest development occurs and where continuous integration is always applied at the build server.
+                </p>
+
+                <h4>Features</h4>
+
+                <h4>Releases</h4>
+                <p>
+                    As aforementioned, the only type of long-lived branch is for releases. Features and defects are short-lived branches from their target branch, either master or a release branch.
+                </p>
+                <p>
+                    Typically, a release will be performed from its own release branch and named after the major and minor version it manages followed by an x for the patch version, i.e. 1.1.x. The
+                    x for patch indicates this segment of the version will be changing on the branch. It is safe to delete a release branch once release activities are complete since it can be easily
+                    re-created from a release tag.
+                </p>
+                <p>
+                    In circumstances where a release doesn't need to be isolated onto its own branch, it is perfectly fine to release from master. Of course, this should be exercised with caution to
+                    ensure only the desired commits are rolled into the release. The flexibility to allow releases from master is beneficial since there is no need to maintain a separate release branch
+                    unless absolutely needed. It's important to note that a release maintenance branch can be easily created at any time from a release tag.
+                </p>
+                <p>
+                    When creating a release branch from a tag, it is important that the project version is set to the next version SNAPSHOT to target the correct next release, i.e. 1.1.1 -> 1.1.2-SNAPSHOT.
+                </p>
+
+                <h4>Tags</h4>
+                <p>
+                    Tags are used almost exclusively for releases. When a final release is cut via a Jenkins Job, the Maven Release Plugin will create a corresponding tag in the respective repository, i.e. web-app-1.1.0.
+                </p>
+
+                <h5>References</h5>
+                <p>
+                    <small>
+                        [CD] Humble, J and Farley, D (2011). Continuous Delivery. Crawfordsville, Indiana, USA: Addison Wesley. p381-416.
+                    </small>
+                </p>
+            </div>
+        </section>
+
+        <section id="about" class="content-dark">
+            <div class="container">
+                <h2>About</h2>
+                <p class="lead">What is this all about?</p>
+                <p>
+                    This site describes and promotes the "Release Branching Strategy". It
+                    seems that some facets of the software industry have lost the simplicity and effectiveness of this
+                    documented and proven branching strategy amongst the noise and attention around other strategies
+                    such as Gitflow.
+                </p>
+                <p>
+                    The aim of the authors of this site is to resurrect the "Release Branching Strategy", known
+                    in some quarters as "Trunk Based Development" and "Develop on mainline", with a trendy name; "releaseflow".
+                    Moreover, it is hoped that this site becomes the defacto reference for documenting
+                    the branching strategy employed by teams all over the world.  Just as semver.org has settled the
+                    version scheming problem, releaseflow.org documents proper branching strategy.  Hopefully you'll never
+                    need to document your software development team's branching strategy again; just link to this site.
+                    You're welcome.
+                </p>
+                <p>
+                    Why the name releaseflow?  Well, the "flow" suffix is non-negotiable.  Every recent branching strategy
+                    has a name containing the word "flow".  As for the the prefix, that's a nod towards the name given to this
+                    branching strategy in the 2011 book Continuous Integration [CD].  There's also a really
+                    important meaning conveyed in the name here... the flow of releases.  Every software project team
+                    wants to have a continuous flow of successful releases to their live environment(s).  Employing
+                    the releaseflow branching strategy is one way to make that happen.
+                </p>
+                <p>
+                    So you'll observe that releaseflow is is nothing new and that there are certainly many software projects
+                    out there using this strategy already.  Those that do so have laid the right foundation for success right
+                    through the whole development lifecycle; from initial development, through testing and into maintenance.
+                </p>
+
+            </div>
+        </section>
+
+        <section id="appendix" class="content-light">
+            <div class="container">
+                <h2>Appendix</h2>
+                <h3>The "master is production" fallacy</h3>
+                <h4>Two schools of thought</h4>
+                <p>
+                    It is important to discuss the two main schools of thought
+                    around branching strategies; "unstable" vs "stable" trunk. If you've not been in the
+                    industry since the early 2000s, you can be forgiven for staring at your screen blankly.  There's a few
+                    terms to unpack here.
+                </p>
+                <p>
+                    The word "trunk" comes from older source control systems such as CVS and Subversion, but simply
+                    means the mainline, i.e. master in Git.  As for "unstable" and "stable", this refers to the
+                    state of code.  A codebase would be deemed stable if it represented the latest stable release.
+                    It follows therefore, that unstable means the latest cutting-edge changes which may not
+                    be compiling, passing tests and/or deployable.
+                </p>
+                <p>
+                    Developing on the trunk (mainline) is deemed unstable since the branch contains the
+                    latest, cutting-edge changes and new features which are unproven and could break the build at
+                    any moment.
+                </p>
+
+                <h4>The idea of a stable trunk is broken</h4>
+                <p>
+                    From the desire for a stable trunk, some individuals employ strategies
+                    where development is made on a separate branch and changes are only merged to the mainline when proven
+                    stable - as part of a release.
+                </p>
+                <p>
+                    The idea of relating an environment to a branch in source-control system is flawed.  The "stable" trunk
+                    philosophy does just that - trying to equate the production environment to the mainline branch.  Usually,
+                    the motivation is to maintain a branch within the version control system where they can locate the code
+                    running in production.  A branch is simply not needed - nor intended - to support such a use case.  A tag
+                    should instead be used to mark each release.  Want to find the code running in production?  Simply checkout
+                    the corresponding tag!  Imagine a scenario where you have multiple production environments, each potentially
+                    needing a different version?  Mapping a mainline branch to a production environment is not going
+                    to be of any use.
+                </p>
+                <p>
+                    The idea of having a mainline which matches the code deployed in production is a fallacy.  The
+                    approach is flawed.  Any branching strategy which stems from this school of thought should be
+                    discounted.
+                </p>
+
+                <h4>Why an unstable trunk fixes stuff</h4>
+                <p>
+                    But the idea of being stable sounds good!
+                </p>
+                <p>
+                    Sure, maybe an unstable trunk sounds scary.  Let's discuss that a little.  Software teams should always
+                    aim to keep their mainline compiling, passing tests and deployable.  If that's not the norm, then
+                    something isn't right.  Any time a build failure is encountered on the mainline, engineers should jump
+                    right onto the failure and fix immediately.  The "unstable" trunk approach doesn't mean engineers recklessly commit
+                    breaking changes to the mainline.  However, the approach recognises that since changes are being made,
+                    stuff can go wrong sometimes.
+                </p>
+                <p>
+                    A healthy engineering team should practice continuous integration, using a build server to automatically
+                    compile and test changes.  Features should be developed on feature branches,
+                    sourced from the mainline and destined for the mainline.  Pull requests should be used
+                    so peer reviews and automated builds can verify that the correct changes are being made before being accepted.
+                    Good practices should minimise failures but of course doesn't guarantee the mainline is always
+                    completely stable.
+                </p>
+                <p>
+                    An unstable trunk approach encourages early integration which is always better.  The releaseflow strategy
+                    stems from this school of thought, along with guidance around the use of branches of features, releases
+                    and maintenance.
+                </p>
+            </div>
+        </section>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
