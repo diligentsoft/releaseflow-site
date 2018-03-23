@@ -82,25 +82,24 @@
                 <h2>Developing</h2>
                 <p class="lead">Branching for development</p>
 
-                <h4>The sweet spot</h4>
+                <h4>Basic Feature Branches</h4>
                 <p>
-                    Ideally, develop on short-lived feature branches that originate from and terminate on the mainline.  A feature branch facilitates isolation of the changes being introduced
-                    and makes peer-review super simple.  Releases keep flowing right from the mainline.
+                    For the majority of development, basic feature branches will do just fine.  Simple, short-lived feature branching from and back to the mainline via pull requests.
                 </p>
                 <img class="releaseflow-diagram" src="img/dev-x-basic-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Basic">
 
-                <h4>Life aint always simple</h4>
+                <h4>Advanced Feature Branching</h4>
                 <p>
-                    Of course, some business contexts don't lend themselves to continual releases from the mainline. When some manual testing / hardening is needed, simply create a release
-                    branch so that feature development can continue on the mainline.
+                    Occasionally, a team may find it necessary to facilitate concurrent development on a feature.  Perhaps a number of components have been identified in the design
+                    and there are clear interface boundaries between these components.  Team members wish to develop these components independently.  This can be accomplished by using
+                    a base branch for a feature/user story which defined the necessary interfaces and boundary types.  Branches for tasks can then be created from this base branch.
                 </p>
-                <img class="releaseflow-diagram" src="img/dev-x-intermediate-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Intermediate">
-
-                <h4>Controlled Complexity</h4>
+                <img class="releaseflow-diagram" src="img/dev-x-advanced-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Basic">
                 <p>
-                    Other teams sometimes have to deal with more than one ongoing release while continuing feature development for some future release.  No problem.
+                    Depending on the scenario, it might be acceptable to just let the first task branch merge to the mainline, which would also introduce the necessary interfaces and boundary types.
+                    Another approach would be for the task branches to merge back to the base story branch and then have that story branch merged to the mainline.  The obvious
+                    downside of the latter approach is a larger pull request to review.
                 </p>
-                <img class="releaseflow-diagram" src="img/dev-x-advanced-dark.png" class="mx-auto d-block" alt="Release Flow - Development Experience - Advanced">
             </div>
         </section>
 
@@ -109,11 +108,45 @@
                 <h2>Releasing</h2>
                 <p class="lead">Branching for releases</p>
                 <p>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    A branch for a release is useful, but not always required.  If a release can be cut right from the mainline, then that's exactly what should be done.
+                    More importantly, regardless of the source branch, releases should always result in a tag of the repository.  The tag provides the
+                    necessary anchor point which is critical for maintenance of that release.
                 </p>
                 <p>
-                    Releases should always produce a tag.
+                    A release tag should use a three segment number as defined in <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning 2.0.0</a>:
                 </p>
+                <ul>
+                    <li>MAJOR version when you make incompatible API changes,</li>
+                    <li>MINOR version when you add functionality in a backwards-compatible manner, and</li>
+                    <li>PATCH version when you make backwards-compatible bug fixes.</li>
+                </ul>
+                <p>
+                    Should a release branch be necessary, it should be named using the first two segments of the release version.  An <em>x</em> should be used for the third segment, signifying that the
+                    branch is open for PATCH changes which result in new releases where only the third segment of the version number is incremented.
+                    An example branch name might be <em>release/1.1.x</em> from which you'd expect tags such as <em>1.1.0</em>, <em>1.1.1</em>
+                    and <em>1.1.2</em>.
+                </p>
+
+                <h4>The sweet spot</h4>
+                <p>
+                    Ideally, develop on short-lived feature branches that originate from and terminate on the mainline.  A feature branch facilitates isolation of the changes being introduced
+                    and makes peer-review super simple.  Releases can just keep flowing right from the mainline.
+                </p>
+                <img class="releaseflow-diagram" src="img/release-x-basic-light.png" class="mx-auto d-block" alt="Release Flow - Releasing Experience - Basic">
+
+                <h4>Life aint always simple</h4>
+                <p>
+                    Unfortunately, some business contexts don't lend themselves to continual releases from the mainline. Perhaps some manual or long-running tasks are required to support
+                    activities like approvals, testing or hardening.  Simply create a release branch so that feature development can continue on the mainline.
+                </p>
+                <img class="releaseflow-diagram" src="img/release-x-intermediate-light.png" class="mx-auto d-block" alt="Release Flow - Releasing Experience - Intermediate">
+
+                <h4>Controlled Complexity</h4>
+                <p>
+                    Other teams sometimes have support more than one ongoing release while continuing feature development for some future release.  No problem.
+                </p>
+                <img class="releaseflow-diagram" src="img/release-x-advanced-light.png" class="mx-auto d-block" alt="Release Flow - Releasing Experience - Advanced">
+
             </div>
         </section>
 
@@ -175,6 +208,9 @@
                 </p>
 
                 <h3>Branch Roles</h3>
+                <p>
+                    There are a number of different branch types in the releaseflow strategy.  Each has their role to play.
+                </p>
 
                 <h4>Mainline</h4>
                 <p>
@@ -182,6 +218,17 @@
                 </p>
 
                 <h4>Features</h4>
+                <p>
+                    Short-lived branches, lasting days rather than weeks, where new features can be developed without affecting
+                    the the mainline.  These branches should be named appropriately for the given feature.  Imagine working on
+                    user story with identifier US-134, then the appropriate name for your branch would be <em>feature/US-134</em>.
+                </p>
+                <p>
+                    To aid team working for a new feature, it may prove useful to create a branch for
+                    a user story and then further task branches from that branch for development of distinct components.
+                    However, only make this as complex as is needed.  If individual tasks can be performed on a single
+                    feature branch from the mainline, then prefer this simpler option.
+                </p>
 
                 <h4>Releases</h4>
                 <p>
@@ -201,9 +248,22 @@
                     When creating a release branch from a tag, it is important that the project version is set to the next version SNAPSHOT to target the correct next release, i.e. 1.1.1 -> 1.1.2-SNAPSHOT.
                 </p>
 
-                <h4>Tags</h4>
+                <h4>Fixes</h4>
                 <p>
-                    Tags are used almost exclusively for releases. When a final release is cut via a Jenkins Job, the Maven Release Plugin will create a corresponding tag in the respective repository, i.e. web-app-1.1.0.
+                    When a fix is required to an existing branch simply locate the appropriate release branch.  If no branch for the
+                    release exists, simply create one from the respective tag.  Once you have the release branch - the starting point
+                    for the fix - now create your fix branch.  Imagine an issue named BUG-666 was discovered in the 1.1.0 release.  You'd
+                    jump onto the <em>release/1.1.x</em> branch, create a fix branch named <em>fix/BUG-166</em> and make the necessary changes.
+                </p>
+
+                <p>
+                    Once the fix is ready, you'd raise a pull request to have your changes merged into the target release branch where
+                    the actual release can be performed.
+                </p>
+
+                <h3>Tags</h3>
+                <p>
+                    Tags are always created for a release. When a final release is cut via an automated build task, a corresponding tag in the respective repository should be created, i.e. web-app-1.1.0.
                 </p>
 
                 <h5>References</h5>
@@ -229,16 +289,16 @@
                     The aim of the authors of this site is to resurrect the "Release Branching Strategy", known
                     in some quarters as "Trunk Based Development" and "Develop on mainline", with a trendy name; "releaseflow".
                     Moreover, it is hoped that this site becomes the defacto reference for documenting
-                    the branching strategy employed by teams all over the world.  Just as semver.org has settled the
-                    version scheming problem, releaseflow.org documents proper branching strategy.  Hopefully you'll never
-                    need to document your software development team's branching strategy again; just link to this site.
-                    You're welcome.
+                    the branching strategy employed by teams all over the world.  Just as <a href="semver.org" class="text-white">semver.org</a>
+                    has settled the version scheming problem, releaseflow.org aims to settle the branching strategy problem.
+                    Hopefully you'll never need to document your software development team's branching strategy again; just
+                    link to this site. You're welcome.
                 </p>
                 <p>
                     Why the name releaseflow?  Well, the "flow" suffix is non-negotiable.  Every recent branching strategy
                     has a name containing the word "flow".  As for the the prefix, that's a nod towards the name given to this
-                    branching strategy in the 2011 book Continuous Integration [CD].  There's also a really
-                    important meaning conveyed in the name here... the flow of releases.  Every software project team
+                    branching strategy in the 2011 book Continuous Integration [CD].  Coincidentally, really
+                    important meaning is conveyed in the name... the flow of releases.  Every software project team
                     wants to have a continuous flow of successful releases to their live environment(s).  Employing
                     the releaseflow branching strategy is one way to make that happen.
                 </p>
@@ -299,7 +359,7 @@
 
                 <h4>Why an unstable trunk fixes stuff</h4>
                 <p>
-                    But the idea of being stable sounds good!
+                    But isn't that contradictory?
                 </p>
                 <p>
                     Sure, maybe an unstable trunk sounds scary.  Let's discuss that a little.  Software teams should always
