@@ -33,3 +33,11 @@ section {
 a.nav-link {
     color: rgb(17, 119, 184);
 }
+
+a.social-link {
+    color: black;
+}
+
+a.social-link:hover {
+    color: rgb(17, 119, 184);
+}
